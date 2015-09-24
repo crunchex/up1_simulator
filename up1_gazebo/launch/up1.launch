@@ -1,8 +1,14 @@
 <launch>
-  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <!-- <arg name="world_name" value="$(find up1_gazebo)/worlds/up1.world"/> -->
+  <arg name="world_name" default="worlds/empty.world"/>
+
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find up1_gazebo)/worlds/up1.world"/>
-    <!-- more default parameters can be changed here -->
+    <arg name="world_name" value="$(arg world_name)"/>
   </include>
-  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find up1_description)/robots/up1.urdf -urdf -z 1 -model up1" />
+
+  <include file="$(find up1_gazebo)/launch/spawn_up1.launch">
+    <!-- <arg name="x" value="1.0"/>
+    <arg name="y" value="1.0"/>
+    <arg name="z" value="1.0"/> -->
+  </include>
 </launch>
