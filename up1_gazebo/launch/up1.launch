@@ -4,11 +4,13 @@
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(arg world_name)"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
   </include>
 
-  <include file="$(find up1_gazebo)/launch/spawn_up1.launch">
-    <!-- <arg name="x" value="1.0"/>
-    <arg name="y" value="1.0"/>
-    <arg name="z" value="1.0"/> -->
+  <include file="$(find up1_gazebo)/launch/spawn_robot.launch">
   </include>
 </launch>
