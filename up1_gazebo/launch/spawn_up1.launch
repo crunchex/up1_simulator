@@ -7,7 +7,7 @@
   <arg name="pitch" default="0"/>
   <arg name="yaw" default="0"/>
 
-  <param name="up1_description"
+  <param name="robot_description"
          command="$(find xacro)/xacro.py $(find up1_description)/urdf/up1.urdf"/>
   <!-- <node name="spawn_robot" pkg="gazebo" type="spawn_model"
         args="-urdf -param up1_description -model up1
