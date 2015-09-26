@@ -14,12 +14,17 @@
   <arg name="manipulator_module" default="dual_arm" />
   <arg name="io_module" default="io" />
 
+  <!-- Robot description -->
   <include file="$(find up1_description)/launch/description.launch">
     <arg name="base_module" value="$(base_module)" />
     <arg name="manipulator_module" value="$(manipulator_module)" />
     <arg name="io_module" value="$(io_module)" />
   </include>
 
+  <!-- Robot control information -->
+  <include file="$(find up1_control)/launch/control.launch"/>
+
+  <!-- Robot model -->
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
         args="-urdf -param robot_description -model up1
               -x $(arg x) -y $(arg y) -z $(arg z)
