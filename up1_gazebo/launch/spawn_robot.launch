@@ -7,10 +7,11 @@
   <arg name="pitch" default="0"/>
   <arg name="yaw" default="0"/>
 
-  <param name="robot_description" command="$(find xacro)/xacro.py $(find up1_description)/urdf/up1.urdf"/>
+  <include file="$(find up1_description)/launch/description.launch" />
 
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-        args="-file $(find up1_description)/urdf/up1.urdf -urdf -model up1
+        args="-urdf -param robot_description -model up1
               -x $(arg x) -y $(arg y) -z $(arg z)
               -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)" />
+
 </launch>
