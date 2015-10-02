@@ -22,7 +22,7 @@
   </include>
 
   <!-- Robot control information -->
-  <include file="$(find up1_control)/launch/$(arg manipulator)_control.launch">
+  <include file="$(find up1_gazebo)/launch/$(arg manipulator)_control.launch">
     <arg name="sim" value="true" />
   </include>
 
