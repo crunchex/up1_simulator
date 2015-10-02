@@ -22,8 +22,9 @@
   </include>
 
   <!-- Robot control information -->
-  <include file="$(find up1_control)/launch/control.launch">
+  <include file="$(find up1_control)/launch/$(arg manipulator_module)_control.launch">
     <arg name="sim" value="true" />
+
   </include>
 
   <!-- Robot model -->

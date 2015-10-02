@@ -2,6 +2,11 @@
   <!-- <arg name="world_name" value="$(find up1_gazebo)/worlds/up1.world"/> -->
   <arg name="world_name" default="worlds/empty.world"/>
 
+  <!-- Robot config -->
+  <arg name="base_module" default="base" />
+  <arg name="manipulator_module" default="dual_arm" />
+  <arg name="io_module" default="io" />
+
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(arg world_name)"/>
     <arg name="paused" value="false"/>
@@ -12,5 +17,8 @@
   </include>
 
   <include file="$(find up1_gazebo)/launch/spawn_robot.launch">
+    <arg name="base_module" value="$(arg base_module)" />
+    <arg name="manipulator_module" value="$(arg manipulator_module)" />
+    <arg name="io_module" value="$(arg io_module)" />
   </include>
 </launch>
