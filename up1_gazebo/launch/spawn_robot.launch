@@ -10,21 +10,20 @@
   <arg name="yaw" default="0"/>
 
   <!-- Robot config -->
-  <arg name="base_module" default="base" />
-  <arg name="manipulator_module" default="dual_arm" />
-  <arg name="io_module" default="io" />
+  <arg name="base" default="base" />
+  <arg name="manipulator" default="dual_arm" />
+  <arg name="io" default="io" />
 
   <!-- Robot description -->
   <include file="$(find up1_description)/launch/description.launch">
-    <arg name="base_module" value="$(arg base_module)" />
-    <arg name="manipulator_module" value="$(arg manipulator_module)" />
-    <arg name="io_module" value="$(arg io_module)" />
+    <arg name="base_module" value="$(arg base)" />
+    <arg name="manipulator_module" value="$(arg manipulator)" />
+    <arg name="io_module" value="$(arg io)" />
   </include>
 
   <!-- Robot control information -->
-  <include file="$(find up1_control)/launch/$(arg manipulator_module)_control.launch">
+  <include file="$(find up1_control)/launch/$(arg manipulator)_control.launch">
     <arg name="sim" value="true" />
-
   </include>
 
   <!-- Robot model -->
