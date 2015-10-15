@@ -13,6 +13,8 @@
   <node name="manipulator_controller_spawner" pkg="controller_manager" type="spawner" output="screen" ns="/up1"
     args="--shutdown-timeout 3 right_gripper_controller right_gripper_fake_controller right_arm_controller" />
 
+  <node pkg="tf" type="static_transform_publisher" name="virtual_joint_broadcaster_0" args="0 0 0 0 0 0 odom_combined up1_footprint 100" />
+
   <!-- Remap follow_joint_trajectory -->
   <remap if="$(arg sim)" from="/right_arm_controller/follow_joint_trajectory" to="/up1/right_arm_controller/follow_joint_trajectory" />
   <remap if="$(arg sim)" from="/right_gripper_controller/gripper_action" to="/up1/right_gripper_controller/gripper_cmd" />
