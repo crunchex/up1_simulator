@@ -11,7 +11,12 @@
   <!-- Load the controllers -->
   <!-- TODO: add this separate controller spawner for non-arm stuff like the base (twist) -->
   <node name="manipulator_controller_spawner" pkg="controller_manager" type="spawner" output="screen" ns="/up1"
-    args="--shutdown-timeout 3 right_gripper_controller right_gripper_fake_controller right_arm_controller" />
+    args="--shutdown-timeout 3 right_gripper_controller right_gripper_fake_controller right_arm_controller joint_state_controller" />
+
+  <!-- Start the robot state publisher -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" >
+    <remap from="/joint_states" to="/up1/joint_states" />
+  </node>
 
   <node pkg="tf" type="static_transform_publisher" name="virtual_joint_broadcaster_0" args="0 0 0 0 0 0 odom_combined up1_footprint 100" />
 
@@ -22,6 +27,7 @@
 
   <!-- Launch moveit for arm -->
   <include file="$(find up1_mono_moveit_config)/launch/move_group.launch">
+    <remap from="/joint_states" to="/up1/joint_states" />
     <arg name="debug" default="$(arg debug)" />
   </include>
 
